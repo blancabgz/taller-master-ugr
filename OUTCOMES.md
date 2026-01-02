@@ -9,7 +9,7 @@
 ## 📋 Exercise Summary
 
 ### Exercise: Intermediate Level
-**Status**: ⏳ In Progress 
+**Status**: ✅ Completed
 
 **What I did**:
 En este ejercicio trabajé con comandos de dificultad intermedia de Git centrados en integración de ramas en una, resolución de conflictos y el uso de etiquetas. Lo que hice fué crear dos ramas a partir de la rama intermediate, que modificaban el mismo archivo para provocar un conflicto, de forma manual, mediante el editor, resolví el conflicto generado manteniendo ambos cambios y creé el commit. Además cree y comparé etiquetas para comprender el uso.
@@ -178,12 +178,12 @@ Rate your confidence level for each topic (1-5, where 5 is very confident):
 **Links to branches/commits**:
 - Link to your outcome branch: `https://github.com/blancabgz/taller-master-ugr/tree/group-16-outcomes/intermediate`
 - Key commits demonstrating your work:
-  - Commit hash: [Short description]
-  - Commit hash: [Short description]
+  - 745d0d5: Merge footer with resolved conflicts
+  - 1f9896a: Nivel intermedio
 
 **Additional files created** (if any):
-- File 1: [Description]
-- File 2: [Description]
+- page.html
+
 
 ---
 
@@ -195,7 +195,7 @@ Before submitting, ensure you have:
 - x Described challenges and how you resolved them
 - x Provided a thoughtful reflection on your learning
 - x Self-assessed your confidence in each topic
-- [] Pushed your outcome branch to the remote repository
+- x Pushed your outcome branch to the remote repository
 - [ ] Created a Pull Request (if required by your instructor)
 
 ---
@@ -207,4 +207,4 @@ Lo mismo que en el primero, el grupo es 16 pero no estoy en ese grupo pero estoy
 ---
 
 **Submission Date**: 02/01/2026
-**Ready for Review**: ❌ No
+**Ready for Review**: Yes
