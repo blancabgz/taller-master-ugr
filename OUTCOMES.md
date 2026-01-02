@@ -148,14 +148,13 @@ Rate your confidence level for each topic (1-5, where 5 is very confident):
 ## 🔗 Evidence/Artifacts
 
 **Links to branches/commits**:
-- Link to your outcome branch: `https://github.com/miguel-oltra/taller-master-ugr/tree/group-X-outcomes/[level]`
+- Link to your outcome branch: `https://github.com/blancabgz/taller-master-ugr/tree/group-16-outcomes/newbie`
 - Key commits demonstrating your work:
-  - Commit hash: [Short description]
-  - Commit hash: [Short description]
+  - 4384c28: Archivo OUTCOMES rellenado
 
 **Additional files created** (if any):
-- File 1: [Description]
-- File 2: [Description]
+- hello.txt: [Archivo con mi nombre en el interior]
+- my-info.txt: [Archivo con mi nombre, cual es mi lenguaje favorito y porqué estoy aprendiendo Git]
 
 ---
 
@@ -167,16 +166,17 @@ Before submitting, ensure you have:
 - [ x ] Described challenges and how you resolved them
 - [ x ] Provided a thoughtful reflection on your learning
 - [ x ] Self-assessed your confidence in each topic
-- [ ] Pushed your outcome branch to the remote repository
+- [ x ] Pushed your outcome branch to the remote repository
 - [ ] Created a Pull Request (if required by your instructor)
 
 ---
 
 ## 📝 Additional Comments
 
-[Any additional thoughts, questions, or feedback about the exercises]
+He puesto el grupo 16 porque soy online y no estoy en ningún grupo. 
+No se si tenía que crear la pull request 
 
 ---
 
 **Submission Date**: [2/1/2026]  
-**Ready for Review**:  ❌ No
+**Ready for Review**:  Yes
