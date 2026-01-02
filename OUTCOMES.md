@@ -137,7 +137,7 @@ Rate your confidence level for each topic (1-5, where 5 is very confident):
 |-------|------------------|-------|
 | Basic Git commands | [ 5 ] | He estado cómoda utilizando los comandos básicos de Git|
 | Branching & merging | [4] | Antes había hecho uso de ramas pero la parte de local y remota me ha liado un poco |
-| Remote operations | [ 4] | |
+| Remote operations | [ 4] | He podido solucionar un error con este tema de forma rápida y directa |
 | Conflict resolution | [ 5 ] | No ha habido conflictos |
 | History rewriting | [ 5] | No he tenido que modificar commits pero en caso de hacerlo, sabría |
 | Git hooks | [ 5 ] | No ha sido necesario aplicarlo|
@@ -162,11 +162,11 @@ Rate your confidence level for each topic (1-5, where 5 is very confident):
 ## ✅ Completion Checklist
 
 Before submitting, ensure you have:
-- [ ] Completed the exercise for your chosen level (including all parts)
-- [ ] Documented all commands used with their outputs
-- [ ] Described challenges and how you resolved them
-- [ ] Provided a thoughtful reflection on your learning
-- [ ] Self-assessed your confidence in each topic
+- [ x ] Completed the exercise for your chosen level (including all parts)
+- [ x ] Documented all commands used with their outputs
+- [ x ] Described challenges and how you resolved them
+- [ x ] Provided a thoughtful reflection on your learning
+- [ x ] Self-assessed your confidence in each topic
 - [ ] Pushed your outcome branch to the remote repository
 - [ ] Created a Pull Request (if required by your instructor)
 
@@ -178,5 +178,5 @@ Before submitting, ensure you have:
 
 ---
 
-**Submission Date**: [Date]  
-**Ready for Review**: ✅ Yes / ❌ No
+**Submission Date**: [2/1/2026]  
+**Ready for Review**:  ❌ No
