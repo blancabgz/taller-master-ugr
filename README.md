@@ -1,209 +1,250 @@
 # taller-master-ugr
 A repository to showcase how GitHub works to master students
 
-# Newbie Level Exercise
+# Master Level Exercise
 
-Welcome to the Newbie level! This exercise will help you get started with basic Git commands, branching, and remote operations.
+Welcome to the Master level! This advanced exercise will teach you about rewriting Git history using rebase and amend commits.
 
-## Exercise - Fundamentals of Git: Commands, Branches & Remote Operations
-**Objective**: Master essential Git commands including init, clone, add, commit, status, log, branch creation/switching, and basic remote operations (push, pull).
+## Exercise - Rewriting History (Rebase and Amend Commits)
+**Objective**: Learn to rewrite Git history safely and effectively using rebase and amend to create clean, professional commit histories.
 
 **Tasks**:
 
-### Part 1: Repository Setup and Basic Commands
-1. Configure your Git identity:
+### Part 1: Amending Commits
+1. Create a new file `config.txt` with some configuration:
    ```bash
-   git config --global user.name "Your Name"
-   git config --global user.email "your.email@example.com"
+   echo "version=1.0" > config.txt
+   git add config.txt
+   git commit -m "Add configuration file"
    ```
 
-2. Clone this repository using SSH:
-   * First, [configure SSH credentials](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
-   * Then clone:
+2. Realize you forgot something. Add more content:
    ```bash
-   git clone git@github.com:miguel-oltra/taller-master-ugr.git
+   echo "environment=production" >> config.txt
+   git add config.txt
+   git commit --amend -m "Add complete configuration file"
    ```
 
-3. Practice basic commands:
-   * Create a new file called `hello.txt` with your name in it
-   * Use `git status` to see the untracked file
-   * Use `git add hello.txt` to stage the file
-   * Use `git commit -m "Add hello.txt with my name"` to commit
-   * Use `git log` to view your commit history
-
-### Part 2: Branches and Remote Operations
-1. Create a new branch called `feature/my-info`:
+3. View the log to see only one commit was created:
    ```bash
-   git branch feature/my-info
-   git checkout feature/my-info
-   # Or use the shortcut: git checkout -b feature/my-info
+   git log --oneline -n 3
    ```
 
-2. Add a new file called `my-info.txt` containing:
-   * Your name
-   * Your favorite programming language
-   * Why you're learning Git
-
-3. Commit your changes:
+### Part 2: Interactive Rebase for Cleaning Up History
+1. Create multiple commits:
    ```bash
-   git add my-info.txt
-   git commit -m "Add personal information"
+   echo "Feature A" > featureA.txt
+   git add featureA.txt
+   git commit -m "Add feature A"
+   
+   echo "Feature B" > featureB.txt
+   git add featureB.txt
+   git commit -m "Add feature B"
+   
+   echo "Fix typo in A" >> featureA.txt
+   git add featureA.txt
+   git commit -m "Fix typo"
    ```
 
-4. Push your branch to the remote repository:
+2. Use interactive rebase to clean up the history:
    ```bash
-   git push origin feature/my-info
+   git rebase -i HEAD~3
+   ```
+   * In the editor, change the third commit from `pick` to `fixup` (or `f`) to squash it into the first
+   * You can also use `reword` (or `r`) to change commit messages
+   * Save and close the editor
+
+3. Verify your cleaned history:
+   ```bash
+   git log --oneline -n 5
    ```
 
-5. Switch back to the newbie branch:
+### Part 3: Rebasing a Branch
+1. Create a feature branch and make commits:
    ```bash
-   git checkout newbie
+   git checkout -b feature/awesome-feature
+   echo "Awesome Feature" > awesome.txt
+   git add awesome.txt
+   git commit -m "Add awesome feature"
    ```
 
-6. Pull the latest changes from remote:
+2. Switch back to master and make a change to simulate main branch advancement:
    ```bash
-   git pull origin newbie
+   git checkout master
+   echo "Master update" > master-update.txt
+   git add master-update.txt
+   git commit -m "Update on master branch"
    ```
+
+3. Rebase your feature branch onto the latest master:
+   ```bash
+   git checkout feature/awesome-feature
+   git rebase master
+   ```
+
+4. View the history graph to see the linear history:
+   ```bash
+   git log --graph --oneline --all -n 10
+   ```
+
+### Part 4: Understanding the Risks
+1. Examine the commit SHAs before and after rebase/amend
+2. Understand why you should NEVER rewrite public/shared history
+3. Practice the safe workflow:
+   * Rewrite history only on private branches
+   * Use `git push --force-with-lease` if you must push rewritten history
+   * Document when you've rewritten history
 
 **Success Criteria**:
-- You have successfully cloned the repository
-- You can view the status of your working directory and commit history
-- You have made at least two commits with meaningful messages
-- You have created and switched between branches
-- Your feature branch exists on the remote repository
-- You understand the difference between local and remote branches
-- You can successfully push and pull changes
+- You can amend the last commit without creating a new one
+- You can use interactive rebase to squash, fixup, reword, or reorder commits
+- You understand when to use rebase vs merge
+- You can rebase a feature branch onto an updated main branch
+- You know the dangers of rewriting public history and how to avoid them
+- You understand the difference between `git push --force` and `git push --force-with-lease`
 
 ---
 
 ## 📤 Submitting Your Work
 
-### Congratulations on completing the Newbie Level! 🎉
+### Congratulations on completing the Master Level! 🎉
 
-Now it's time to document and submit your work for evaluation.
+You've mastered advanced Git techniques including history rewriting with rebase and amend. Now demonstrate your expertise!
 
 ### Step 1: Create Your Outcome Branch
 
-From the newbie branch, create your group's outcome branch:
-
 ```bash
-# Make sure you're on the newbie branch
-git checkout newbie
-
-# Create your outcome branch (replace X with your group letter: A, B, C, etc.)
-git checkout -b group-X-outcomes/newbie
-```
-
-**Example**: If you're in Group A:
-```bash
-git checkout -b group-A-outcomes/newbie
+git checkout master
+git checkout -b group-X-outcomes/master
 ```
 
 ### Step 2: Document Your Outcomes
 
-1. **Copy the outcome template**:
+1. **Get the template**:
    ```bash
    git checkout main -- OUTCOME_TEMPLATE.md
    cp OUTCOME_TEMPLATE.md OUTCOMES.md
    ```
 
-2. **Fill out `OUTCOMES.md`** with:
-   - **Exercise Documentation**:
-     - **Part 1**: Commands you used (config, clone, add, commit, status, log)
-     - Output from `git log` showing your commits
-     - Screenshot or output of `git status`
-   
-     - **Part 2**: Commands for creating and switching branches, and remote operations
-     - Output from `git branch -a` showing your branches
-     - Output from `git log --oneline --graph --all`
-     - Screenshot showing your branch on GitHub
-   
-   - **Challenges & Solutions**:
-     - Did you have SSH key issues? How did you resolve them?
-     - Any confusion about staging vs. committing?
-     - Problems with push/pull?
-   
-   - **Reflection**:
-     - What did you learn about the three-tree architecture (working dir, staging, repo)?
-     - When would you use branches in real projects?
-     - What's the difference between local and remote repositories?
+2. **Complete `OUTCOMES.md`** with comprehensive documentation:
 
-### Step 3: Commit Your Documentation
+   **Part 1 - Amending Commits**:
+   - Commands used for amend operations
+   - Git log output before and after amend
+   - Comparison of commit SHAs to show history was rewritten
+   
+   **Part 2 - Interactive Rebase**:
+   - Commands and editor interactions for interactive rebase
+   - Demonstration of fixup, reword, and other rebase operations
+   - Git log output showing cleaned-up history before and after
+   
+   **Part 3 - Rebasing a Branch**:
+   - Commands for creating feature branch and rebasing onto master
+   - `git log --graph --all --oneline` showing linear history after rebase
+   - Explanation of how rebase differs from merge
+   
+   **Part 4 - Understanding Risks**:
+   - Documentation of how commit SHAs change during rebase
+   - Explanation of why rewriting public/shared history is dangerous
+   - Best practices for safe history rewriting
+   - Difference between `--force` and `--force-with-lease`
+3. **Advanced challenges documentation**:
+   - Rebase conflicts: How did you resolve them?
+   - Interactive rebase mistakes: Any issues? How did you recover?
+   - Force push understanding: When to use `--force` vs `--force-with-lease`?
+   - Real-world scenarios where you'd choose rebase over merge
+
+4. **Deep reflection** (minimum 200 words):
+   - When is it safe to rewrite history? When is it dangerous?
+   - How does rebase help create clean, professional commit histories?
+   - What's the fundamental difference between rebase and merge?
+   - How would you implement history-rewriting workflows in a professional team setting?
+   - Why is it important to never rewrite public/shared history?
+
+### Step 3: Commit and Push
 
 ```bash
 git add OUTCOMES.md
-git commit -m "docs: Add newbie level exercise outcomes for Group X"
+git commit -m "docs: Add master level exercise outcomes for Group X"
+git push origin group-X-outcomes/master
 ```
 
-### Step 4: Push to Remote
+### What to Include
 
-```bash
-git push origin group-X-outcomes/newbie
-```
+✅ **Part 1 Requirements**:
+- Minimum 3 commits demonstrating amend functionality
+- Git log showing commit SHAs before and after amend
+- Explanation of how amend rewrites history
 
-### Step 5: Create a Pull Request (Optional)
+✅ **Part 2 Requirements**:
+- Interactive rebase with at least 4 operations (pick, squash, fixup, reword, etc.)
+- Before and after git log comparison
+- Documentation of what each rebase operation does
 
-If your instructor requires it:
-1. Go to https://github.com/miguel-oltra/taller-master-ugr
-2. Click "Pull Requests" → "New Pull Request"
-3. Select your branch: `group-X-outcomes/newbie` → `main`
-4. Title: "Outcomes: Group X - Newbie Level"
-5. Add description with any questions or comments
-6. Submit for review
+✅ **Part 3 Requirements**:
+- Complete demonstration of rebasing a feature branch
+- `git log --graph` showing linear history vs merge commit approach
+- Explanation of when rebase is preferable to merge
 
-### What to Include in Your Documentation
-
-✅ **For This Exercise**:
-- Git configuration commands
-- Clone command and output
-- At least 3 commits demonstrating add/commit workflow
-- Git log output
-- Git status at different stages
-- Branch creation commands
-- Output showing local and remote branches
-- Push command and confirmation
-- Pull command and output
-- Evidence of successful remote operations
+✅ **Part 4 Requirements**:
+- Clear documentation of the dangers of rewriting public history
+- Examples of safe vs unsafe rebase scenarios
+- Explanation of `--force-with-lease` vs `--force`
+- Team workflow considerations for history rewriting
 
 ✅ **General Requirements**:
-- All commands with their full output
-- Screenshots of key steps (optional but recommended)
-- Explanation of any errors encountered
-- Reflection on what you learned (minimum 100 words)
-- Self-assessment of confidence (1-5 scale) for each topic
+- Complete command history for all operations
+- Git log outputs showing history transformations
+- Screenshots of hook executions
+- Detailed explanations of complex operations
+- Professional-quality reflection (200+ words)
+- Self-assessment for all master-level topics
 
 ### Evaluation Criteria
 
-Your newbie level work will be evaluated on:
+| Criterion | Weight | Key Focus for Master Level |
+|-----------|--------|----------------------------|
+| Completion | 20% | Exercise completed with all parts and sophisticated implementations |
+| Understanding | 25% | Deep grasp of history rewriting, rebase vs merge trade-offs |
+| Practical Skills | 25% | Safe rebase usage, proper amend technique, clean histories |
+| Problem-Solving | 20% | Complex rebase conflicts, recovery from mistakes |
+| Documentation | 10% | Professional-quality explanations and clear demonstrations |
 
-| Criterion | Weight | What We're Looking For |
-|-----------|--------|------------------------|
-| Completion | 20% | Exercise finished with all parts completed and documented |
-| Understanding | 25% | Clear grasp of Git basics, staging area, branches, and remotes |
-| Practical Skills | 25% | Correct use of commands, clean commit history |
-| Problem-Solving | 20% | How you handled challenges and learned from them |
-| Documentation | 10% | Clear, complete, and well-organized submission |
+**Minimum score to advance to Master of Universe level**: 80/100
 
-**Minimum score to advance to Intermediate level**: 70/100
+### Critical Topics to Address
 
-See `EVALUATION_CRITERIA.md` in the main branch for complete rubric.
+🔴 **History Rewriting**:
+- Why is `git push --force` dangerous?
+- How do you coordinate rebases in a team?
+- What's the difference between `git reset`, `git revert`, and `git rebase`?
+- When is interactive rebase the right tool?
+- How do you recover from a bad rebase?
 
-### Tips for Success
+🔴 **Rebase vs Merge**:
+- What's the fundamental difference in how they work?
+- When should you choose rebase over merge?
+- When should you choose merge over rebase?
+- How does each affect the project history?
+- What are the collaboration implications of each?
 
-💡 Save all command outputs as you work  
-💡 Take screenshots of important steps  
-💡 Write notes about challenges immediately when they occur  
-💡 Be honest about difficulties - that shows learning!  
-💡 Ask questions if something isn't clear  
+### Tips for Excellence
 
-### Need Help?
+🎯 Show, don't just tell - include comprehensive command outputs  
+🎯 Document commit SHAs before and after rewrites  
+🎯 Create git log graphs showing history transformations  
+🎯 Test rebase in different scenarios and document results  
+🎯 Demonstrate both correct usage and common mistakes with recovery  
+🎯 Include real-world scenarios where these techniques are valuable  
 
-- Review `OUTCOME_TEMPLATE.md` for detailed guidance
-- Check `EVALUATION_CRITERIA.md` for expectations
-- Ask your instructor or group members
-- Review Git documentation: https://git-scm.com/doc
+### Resources
+
+- Git internals: https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain
+- Rewriting history: https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History
+- Git rebase: https://git-scm.com/docs/git-rebase
+- Interactive rebase: https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#_changing_multiple
+- Rebase vs Merge: https://www.atlassian.com/git/tutorials/merging-vs-rebasing
 
 ---
 
-**Next Steps**: Once you've completed these exercises, you're ready to move to the `intermediate` branch for more challenging tasks!
-
+**Next Steps**: Ready for the ultimate challenge? Move to the `master-of-the-universe` branch for expert-level exercises on branch protection rules and security best practices with GPG signing!
